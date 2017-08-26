@@ -1,4 +1,4 @@
-# Prequisites
+# Prerequisite
 - Install ``Ansible``
 - Install ``apache-libcloud``
 
