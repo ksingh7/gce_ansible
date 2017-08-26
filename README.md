@@ -34,7 +34,7 @@ export GCE_CREDENTIALS_FILE_PATH=<path-to-GCE-default-service-account-credential
 ```
 - Edit ``group_vars/all`` file for your desired changes
 
-- Provision GCP Resources
+- Provision GCP Resources (GCE+GPD)
 
 ```
 ansible-playbook -i hosts provision-gpc-resources.yml
