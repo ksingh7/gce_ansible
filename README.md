@@ -5,8 +5,8 @@
 ```
 $ sudo pip install apache-libcloud
 ```
-## Get Compute Engine Default Service Account Keys
-- Open GCP Console --> IAM --> Service Account --> "Compute Engine default service account" --> Create Key
+- Get Compute Engine Default Service Account Keys
+  - Open GCP Console --> IAM --> Service Account --> "Compute Engine default service account" --> Create Key
 
 ![Compute Engine default service account](http://i.imgur.com/wgaBmZW.png)
 
