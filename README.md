@@ -53,3 +53,8 @@ ansible-playbook -i hosts destroy-gcp-resources.yml
 ```
 ansible-playbook -i hosts destroy-gcp-resources.yml -e "disk_state=absent"
 ```
+
+- Login to your instance (if you have gcloud SDK installed)
+```
+$ gcloud compute ssh <Instance_name>
+```
