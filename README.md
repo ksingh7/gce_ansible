@@ -10,6 +10,7 @@ $ sudo pip install apache-libcloud
 ![Compute Engine default service account](http://i.imgur.com/wgaBmZW.png)
 
 - Download JSON file
+
 ![Compute Engine default service account Credentials](http://i.imgur.com/ShLHvCM.png)
 
 # Managing GCE/GPD using Ansible
@@ -25,6 +26,8 @@ export GCE_EMAIL=<your-service-account-email>
 export GCE_PROJECT=<your-project-id>
 export GCE_CREDENTIALS_FILE_PATH=<path-to-GCE-default-service-account-credentials-downloaded-previously>
 ```
+- Edit ``group_vars/all`` file for your desired changes
+
 - Provision GCP Resources
 
 ```
