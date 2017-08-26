@@ -6,12 +6,24 @@
 $ sudo pip install apache-libcloud
 ```
 ## Get Compute Engine Default Service Account Keys
-- Open GCP Console > IAM > Service Account > "Compute Engine default service account" > Create Key > Download JSON file
+- Open GCP Console --> IAM --> Service Account --> "Compute Engine default service account" --> Create Key
+![Compute Engine default service account](http://i.imgur.com/wgaBmZW.png)
+
+- Download JSON file
+![Compute Engine default service account Credentials](http://i.imgur.com/ShLHvCM.png)
+
+# Managing GCE/GPD using Ansible
+
+- Git clone this repo
+```
+$ git clone https://github.com/ksingh7/gce_ansible.git
+```
+- Eport necessary GCE details 
 
 ```
 export GCE_EMAIL=<your-service-account-email>
 export GCE_PROJECT=<your-project-id>
-export GCE_CREDENTIALS_FILE_PATH=/Users/karasing/.config/gcloud/application_default_credentials.json
+export GCE_CREDENTIALS_FILE_PATH=<path-to-GCE-default-service-account-credentials-downloaded-previously>
 ```
 - Provision GCP Resources
 
