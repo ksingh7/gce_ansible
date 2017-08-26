@@ -1,0 +1,45 @@
+---
+- name:  Provision Google Compute Platform Resources 
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  tasks:
+    - name: Provision GCE instance
+      gce:
+        instance_names: "{{ instance_name }}"
+        machine_type: "{{ instance_machine_type }}"
+        image: "{{ image }}"
+        zone: "{{ zone }}"
+        tags: "{{ tags }}"
+        state: "{{ state }}"
+        preemptible: "{{ preemptible }}"
+        project_id: "{{ project_id }}"
+        credentials_file: "{{ credentials_file }}"
+        service_account_email: "{{ service_account_email }}"
+      register: gce_instance
+
+#    - debug: var=gce_instance
+#    - debug: var=gce_instance.instance_names
+
+    - name: Provision GCP disk
+      gce_pd:
+          name: "{{ disk_name }}"
+          instance_name: "{{ item }}"
+          size_gb: "{{ disk_size }}"
+          disk_type: "{{ disk_type }}"
+          zone: "{{ zone }}"
+          mode: "{{ mode }}"
+          state: "{{ disk_state }}"
+          project_id: "{{ project_id }}"
+          credentials_file: "{{ credentials_file }}"
+          service_account_email: "{{ service_account_email }}"
+      with_items: "{{ gce_instance.instance_names }}"
+
+    - name: Waiting for SSH to respond
+      wait_for: delay=1 host={{ item.public_ip }} port=22 state=started timeout=30
+      with_items: "{{ gce_instance.instance_data }}"
+
+    - name: Save host to dynamic ansible group_vars
+      add_host:  hostname={{ item.public_ip }} groupname=instances ansible_host={{ inventory_hostname }}
+      with_items: "{{ gce_instance.instance_data }}"
+

@@ -1,0 +1,24 @@
+---
+ansible_ssh_user: ansible-user
+ansible_ssh_private_key_file: /home/ansible-user/.ssh/google_compute_engine
+
+#project_id: scogo-test-env
+#service_account_email: demo-ansible@YOUR_PROJECT_ID.iam.gserviceaccount.com
+credentials_file: /home/ansible-user/demo-ansible.json
+
+instance_name: test-instance-1
+instance_machine_type: n1-standard-1
+image: centos-7
+zone: us-central1-a
+tags: lamp,node-1
+state: present
+preemptible: true ## Set to true only for few hours of testing
+ssh_key: sshKeys
+ssh_value_ksingh: "[ksingh]:ssh-rsa [AAAAB3NzaC1yc2EAAAADAQABAAABAQDmOwKKh4JQ8Swi9QDSq5qFIBV3QvxyMqCBbEwB5vg0pUH7FOI2K8uk5r3kgY71ICrZYkl7Ge+nih45lrcTGRVJ97NiCezYFalNo5wEhLeFxxIYlEuDVyCjfd8B4hLzD4G48EUrfBZGCPrAx2YDBOeNBqNLR7/QBvdnQK/+SYLzj4t/3eUePazb8iJnn+zfYX+exQ2+/72RJzuN96lnJyMr+7OQ3p2zw7RTAf5eTbDB6BLp5J+zCnUlQp3kEZuHTqxgOVRsC7UryWVap/cXbavNicALlFhaoU0gCZgM8qypl2ZQ5UaTZOcqvJLvJi8RV85UqasJnT39TIPcT/462egN] [karasing@karasing-OSX]"
+
+
+disk_name: '{{ instance_name }}'
+disk_size: 2  ## Size in GB
+disk_type: pd-standard  ## set to pd-ssd for SSD
+mode: READ_WRITE
+disk_state: present

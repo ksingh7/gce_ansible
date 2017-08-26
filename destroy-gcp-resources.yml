@@ -1,0 +1,22 @@
+---
+- name: Destroy Google Cloud Platform Resources
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  tasks:
+    - name: Destroy GCE instance
+      gce:
+        instance_names: "{{ instance_name }}"
+        zone: "{{ zone }}"
+        project_id: "{{ project_id }}"
+        credentials_file: "{{ credentials_file }}"
+        service_account_email: "{{ service_account_email }}"
+        state: absent
+    - name: Destroy GPD
+      gce_pd:
+          name: "{{ disk_name }}"
+          zone: "{{ zone }}"
+          state: "{{ disk_state }}"
+          project_id: "{{ project_id }}"
+          credentials_file: "{{ credentials_file }}"
+          service_account_email: "{{ service_account_email }}"

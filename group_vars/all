@@ -1,0 +1,18 @@
+---
+project_id: "{{ lookup('env','GCE_PROJECT') }}"
+service_account_email: "{{ lookup('env','GCE_EMAIL') }}"
+credentials_file: "{{ lookup('env','GCE_CREDENTIALS_FILE_PATH') }}"
+
+instance_name: test-instance-1
+instance_machine_type: n1-standard-1
+image: centos-7-v20170816
+zone: us-central1-a
+tags: lamp,node-1
+state: "present"
+preemptible: true ## Set to true only for few hours of testing
+
+disk_name: "{{ instance_name }}-disk1"
+disk_size: 2  ## Size in GB
+disk_type: pd-standard  ## set to 'pd-ssd' for SSD
+mode: READ_WRITE
+disk_state: present
