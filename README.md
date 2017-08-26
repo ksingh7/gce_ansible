@@ -5,8 +5,10 @@
 ```
 $ sudo pip install apache-libcloud
 ```
+- Add your local machine's SSH keys to GCE Metadata
+  - GCP Console --> GCE --> Metadata --> Add Metadata --> SSH Key --> Add (or Edit)
 - Get Compute Engine Default Service Account Keys
-  - Open GCP Console --> IAM --> Service Account --> "Compute Engine default service account" --> Create Key
+  - GCP Console --> IAM --> Service Account --> "Compute Engine default service account" --> Create Key
 
 ![Compute Engine default service account](http://i.imgur.com/wgaBmZW.png)
 
